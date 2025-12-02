@@ -34,7 +34,7 @@ class MyBot(BaseBot):
 
         # Bot performs a random free emote
         emote_id = random.choice(free_emotes)
-        await self.highrise.emote(emote_id)
+        await self.highrise.send_emote(emote_id)
         print(f"Bot performed emote {emote_id} for user join.")
 
     async def on_chat(self, user: User, message: str) -> None:
