@@ -22,7 +22,7 @@ class MyBot(BaseBot):
         await self.highrise.chat(
             'To use me, always start your message with "Neospire"'
         )
-        print("Bot started in room:", session_metadata.room_id)
+        print("Bot started in room:", session_metadata.room_ID)
 
     async def on_chat(self, user_id: str, message: str) -> None:
         # Only respond if the message mentions "Neospire"
