@@ -14,5 +14,6 @@ SHIRTS = [
 def random_outfit():
     """Return a list of Highrise Item objects."""
     outfit = [
-        Item(type="shirt", id=random.choice(SHIRTS, k=1)[0]),]
+        Item(type="shirt", id=random.choice(SHIRTS), amount=1)
+]
     return outfit
