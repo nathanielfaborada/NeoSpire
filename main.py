@@ -25,10 +25,16 @@ class MyBot(BaseBot):
         print("Bot started in room:", session_metadata)
 
     async def on_chat(self, user_id: str, message: str) -> None:
-        # Only respond if the message mentions "Neospire"
         if "Neospire" in message:
-            # Generate a response using Gemini
-            response = model.generate_content(message)
-            await self.highrise.chat(response.text)
+            # Ask Gemini to generate a short response
+            prompt = f"Reply to this in exactly 5 words, making sense: {message}"
+            response = model.generate_content(prompt)
+            
+            # Optional: ensure 5 words max
+            words = response.text.split()
+            short_response = " ".join(words[:5])
+            
+            await self.highrise.chat(short_response)
+
 
 
