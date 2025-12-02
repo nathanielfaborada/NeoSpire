@@ -29,10 +29,10 @@ class MyBot(BaseBot):
     async def on_chat(self, user: User, message: str) -> None:
         if "Neospire" in message:
             prompt = f"Reply to this in exactly 5 words, making sense: {message}"
-            response = await model.generate_content(prompt)
+            response = model.generate_content(prompt)
             words = response.text.split()
             short_response = " ".join(words[:5])
-            await self.highrise.chat(short_response)
+            await self.highrise.chat(f"{user.username} , {short_response}")
             print(f"Responded to {user.username} with: {short_response}")
 
     async def on_tip(self, sender: User, receiver: User, tip: CurrencyItem | Item) -> None:
