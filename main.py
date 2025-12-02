@@ -24,7 +24,7 @@ class MyBot(BaseBot):
         while True:
             try:
                 outfit = random_outfit()
-                await self.highrise.change_outfit(outfit=outfit)
+                await self.highrise.set_outfit(outfit=outfit)
                 await self.highrise.chat("New outfit applied! 🎽👖👟")
 
             except Exception as e:
