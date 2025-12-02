@@ -40,6 +40,9 @@ class MyBot(BaseBot):
             
     async def on_tip(self, sender: User, receiver: User, tip: CurrencyItem | Item) -> None:
         print (f"{sender.username} tipped {receiver.username} an amount of {tip.amount}")
+        
+    async def on_user_join(self, user: User) -> None:
+        print(f"{user.username} joined the room ")
 
 
 
