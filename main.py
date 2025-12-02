@@ -1,4 +1,4 @@
-from highrise import BaseBot, SessionMetadata, User
+from highrise import BaseBot, SessionMetadata
 from dotenv import load_dotenv
 import google.generativeai as genai
 import os
@@ -24,7 +24,7 @@ class MyBot(BaseBot):
         )
         print("Bot started in room:", session_metadata)
 
-    async def on_chat(self, user: User, message: str) -> None:
+    async def on_chat(self, user_id: str, message: str) -> None:
         if "Neospire" in message:
             # Ask Gemini to generate a short response
             prompt = f"Reply to this in exactly 10 words, making sense: {message}"
@@ -32,10 +32,9 @@ class MyBot(BaseBot):
             
             # Optional: ensure 10 words max
             words = response.text.split()
-            short_response = " ".join(words[:10])
+            short_response = " ".join(words[:5])
             
-            await self.highrise.chat(message=short_response, user_id=user.id)
-
+            await self.highrise.chat(short_response)
 
 
 
