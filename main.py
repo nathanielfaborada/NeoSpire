@@ -29,6 +29,6 @@ class MyBot(BaseBot):
         if "Neospire" in message:
             # Generate a response using Gemini
             response = model.generate_content(message)
-            await self.highrise.chat(user_id,response.text)
+            await self.highrise.chat(response.text)
 
 
