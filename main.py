@@ -40,11 +40,11 @@ class MyBot(BaseBot):
 
     async def on_user_join(self, user: User, position: Position | AnchorPosition) -> None:
         print(f"{user.username} joined the room standing at {position}")
-        await self.highrise.chat(f"Welcome {user.display_name}!")
+        await self.highrise.chat(f"Welcome {user.username}!")
         
         # Bot performs a random emote when someone joins
         emote_id = random.choice(free_emotes)
-        await self.highrise.emote(emote_id)
+        await self.highrise.send_emote(emote_id)
         print(f"Bot performed emote {emote_id}")
 
 
