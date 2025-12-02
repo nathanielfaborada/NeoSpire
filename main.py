@@ -34,7 +34,8 @@ class MyBot(BaseBot):
             words = response.text.split()
             short_response = " ".join(words[:10])
             
-            await self.highrise.chat(user.username,short_response)
+            await self.highrise.chat(message=short_response, user_id=user.id)
+
 
 
 
