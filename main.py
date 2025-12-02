@@ -3,8 +3,7 @@ from dotenv import load_dotenv
 import asyncio
 import os
 
-from outfit.outfit import random_outfit
-
+from outfits import random_outfit
 
 load_dotenv()
 
