@@ -1,4 +1,4 @@
-from highrise import BaseBot, SessionMetadata
+from highrise import BaseBot, SessionMetadata, User
 from dotenv import load_dotenv
 import google.generativeai as genai
 import os
@@ -20,21 +20,21 @@ class MyBot(BaseBot):
     async def on_start(self, session_metadata: SessionMetadata) -> None:
         # Bot will send a greeting when it starts
         await self.highrise.chat(
-            'To use me, always start your message with "Neospire"'
+            'Ask me anything, always start your message with "Neospire"'
         )
         print("Bot started in room:", session_metadata)
 
-    async def on_chat(self, user_id: str, message: str) -> None:
+    async def on_chat(self, user: User, message: str) -> None:
         if "Neospire" in message:
             # Ask Gemini to generate a short response
-            prompt = f"Reply to this in exactly 5 words, making sense: {message}"
+            prompt = f"Reply to this in exactly 10 words, making sense: {message}"
             response = model.generate_content(prompt)
             
-            # Optional: ensure 5 words max
+            # Optional: ensure 10 words max
             words = response.text.split()
-            short_response = " ".join(words[:5])
+            short_response = " ".join(words[:10])
             
-            await self.highrise.chat(short_response)
+            await self.highrise.chat(user.username,short_response)
 
 
 
